@@ -1,6 +1,6 @@
 # Frontend Mentor - Profile card component solution
 
-This is a solution to the [Valentine's Challenge](https://scrimba.com/learn/codeweeks/-romantic-grammar-corrector-challenge-co2514d1b9c9e8f6344b71d67). 
+This is a solution to the [Valentine's Challenge](https://scrimba.com/learn/codeweeks/-filter-duplicate-emojis-challenge-co9e84683a1a75f69bfa6a49d). 
 
 ## Table of contents
 
@@ -30,7 +30,7 @@ text and it will will fix the uppercases and the lowercases in an animated way.
 
 ### Links
 
-- Solution URL: [GitHub](https://github.com/newbpydev/valentines-16-2022)
+- Solution URL: [GitHub](https://github.com/newbpydev/valentines-17-2022)
 - Live Site URL: [Live Site](https://relaxed-boyd-149753.netlify.app/)
 
 ## My process

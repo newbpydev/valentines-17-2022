@@ -1,57 +1,78 @@
 :root {
-  --yellow: #FBF3AB;
-  --light-pink: #F0B9DD;
-  --lavender: #C7B9FF;
-  --deep-pink: #F04C86;
-  --raisin: #2B283A;
+  --yellow: #fbf3ab;
+  --light-pink: #f0b9dd;
+  --lavender: #c7b9ff;
+  --deep-pink: #f04c86;
+  --raisin: #2b283a;
   --white: #fff;
 }
 
-html, body {
-    margin: 0;
-    padding: 0;
+html,
+body {
+  margin: 0;
+  padding: 0;
 }
 
 .flex {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 body {
-    height: 100vh;
-    min-width: 500px;
-    color: var(--raisin);
-    background-color: var(--yellow);
-    font-family: 'Karla', sans-serif;
+  height: 100vh;
+  min-width: 500px;
+  color: var(--raisin);
+  background-color: var(--yellow);
+  font-family: "Karla", sans-serif;
 }
 
-p {    
-    background: var(--light-pink);
-    color: var(--raisin);
-    min-height: 50px;
-    width: 80%;
-    padding: 1em;
-    text-align: center;
-    font-size: 1.5rem;
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
-    border-radius: 5px;
+p {
+  background: var(--light-pink);
+  color: var(--raisin);
+  min-height: 50px;
+  width: 80%;
+  padding: 1em;
+  text-align: center;
+  font-size: 1.5rem;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px,
+    rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+  border-radius: 5px;
 }
 
 button {
-    font-family: inherit;
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
-    border-radius: 5px;
-    border: none;
-    padding: 1em 2em;
-    color: var(--white);
-    background: var(--deep-pink);
+  font-family: inherit;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px,
+    rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+  border-radius: 5px;
+  border: none;
+  padding: 1em 2em;
+  color: var(--white);
+  background: var(--deep-pink);
 }
 
 button:hover,
 button:focus {
-    transform: scale(1.02);
-    cursor: pointer;  
+  transform: scale(1.02);
+  cursor: pointer;
 }
 
+/** CUSTOM STYLES  */
+.all-emojis-p {
+  transition: all 0.3s ease;
+}
+
+.all-emojis-p:hover {
+  transform: scale(1.1, 1.1);
+}
+
+.emoji-span {
+    display: inline-block;
+  transition: all 0.3s ease;
+  cursor: copy;
+  /* height: 2rem; */
+}
+.emoji-span:hover {
+  transform: scale(1.5, 1.5);
+}
