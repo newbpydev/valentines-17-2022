@@ -50,6 +50,7 @@ const emojis = [
 emojiSpanIt();
 
 //!List of emoji elements
+//* code good down here
 const emojiSpanEls = document.querySelectorAll(".emoji-span");
 const emojiUniqueEls = [];
 
@@ -117,20 +118,15 @@ emojiSpanEls.forEach((emojiSpanEl, i) => {
 
 
 uniqueEmojisP.addEventListener("mouseenter", (e) => {
-  console.log(" I am in botom");
 
-
-  emojiUniqueEls.forEach((emoji) => {
-    emoji.addEventListener("click", (e) => {
+  emojiUniqueEls.forEach((emoji, i) => {
+    emoji.addEventListener("click", function clickedEmoji(e) {
       emoji.classList.remove("emoji-span--selected");
-      console.log(emoji);
+      console.log(emoji, i);
+      emoji.removeEventListener("click", clickedEmoji);
 
-      // emojiSpanEls.push(emoji);
-      console.log(emojiUniqueEls);
-  
-      emojiSpanEls.forEach((emojiEl) => {
-        allEmojisP.appendChild(emojiEl);
-      });
+      allEmojisP.appendChild(emoji);
+      
     });
   });
 });
