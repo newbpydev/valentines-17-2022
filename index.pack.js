@@ -50,19 +50,31 @@ const emojis = [
 emojiSpanIt();
 
 //!List of emoji elements
-//* code good down here
 let emojiSpanEls = document.querySelectorAll(".emoji-span");
 updateEmojisEls();
 
+
+
 //! This is the main call function to filter duplicares
+//* filter duplicates
 function filterDuplicates() {
   // 1. Filter out all duplicate emojis, leaving only one of each emoji.
   // 2. Render the unique emojis in uniqueEmojisP.
   // Just for fun: Replace them with your favourite emojis! 😃
+  const emojiTopList = document.querySelectorAll(".emoji-span");
+
+  const uniqueList = emojis.filter(onlyUnique);
+  uniqueList.forEach((emoji) => {
+    uniqueEmojisP.textContent += emoji;
+  })
 }
 
 //* ////////////////////////////////////////////////////////////////////////////
 //* custom functions
+function onlyUnique(value, index, self) {
+  return self.indexOf(value) === index;
+}
+
 
 //* add event to emojis if mouseover and shift to select all alikes
 function topPUpdate() {
@@ -70,10 +82,7 @@ function topPUpdate() {
     emojiSpanEl.addEventListener("mouseover", (eInner) => {
       //! If shift is active
       document.addEventListener("keydown", (e) => {
-        // console.log(e.shiftKey);
-
         if (e.shiftKey) {
-          // console.log("I am in edoc");
           emojiSpanEls.forEach((emoji) => {
             if (emojiSpanEl.textContent === emoji.textContent) {
               emoji.classList.add("emoji-span--shifted");
@@ -81,14 +90,11 @@ function topPUpdate() {
               emoji.classList.remove("emoji-span--shifted");
             }
           });
-        } else {
-          console.log(" I am an else");
         }
       });
 
       //! If shift is not active
       document.addEventListener("keyup", (e) => {
-        console.log("I am trying to refresh");
         emojiSpanEls.forEach((emoji) => {
           emoji.classList.remove("emoji-span--shifted");
         });
@@ -96,7 +102,6 @@ function topPUpdate() {
     });
 
     emojiSpanEl.addEventListener("mouseout", (e) => {
-      console.log("I am mousing out");
       emojiSpanEls.forEach((emoji) => {
         emoji.classList.remove("emoji-span--shifted");
       });
@@ -150,46 +155,3 @@ function updateEmojisEls() {}
 // for (let emoji of emojis) {
 //   allEmojisP.textContent += emoji;
 // }
-
-// emojiSpanEls.forEach((emojiSpanEl, i) => {
-//   emojiSpanEl.addEventListener("mouseover", (eInner) => {
-//     //! If shift is active
-//     document.addEventListener("keydown", (e) => {
-//       // console.log(e.shiftKey);
-
-//       if (e.shiftKey) {
-//         // console.log("I am in edoc");
-//         emojiSpanEls.forEach((emoji) => {
-//           if (emojiSpanEl.textContent === emoji.textContent) {
-//             emoji.classList.add("emoji-span--shifted");
-//           } else {
-//             emoji.classList.remove("emoji-span--shifted");
-//           }
-//         });
-//       } else {
-//         console.log(" I am an else");
-//       }
-//     });
-
-//     //! If shift is not active
-//     document.addEventListener("keyup", (e) => {
-//       console.log("I am trying to refresh");
-//       emojiSpanEls.forEach((emoji) => {
-//         emoji.classList.remove("emoji-span--shifted");
-//       });
-//     });
-//   });
-
-//   emojiSpanEl.addEventListener("mouseout", (e) => {
-//     console.log("I am mousing out");
-//     emojiSpanEls.forEach((emoji) => {
-//       emoji.classList.remove("emoji-span--shifted");
-//     });
-//   });
-
-//   emojiSpanEl.addEventListener("click", function clickedEmoji(e) {
-//     emojiSpanEl.classList.add("emoji-span--selected");
-//     this.removeEventListener("click", clickedEmoji);
-//     uniqueEmojisP.appendChild(emojiSpanEl);
-//   });
-// });
