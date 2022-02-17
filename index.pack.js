@@ -48,8 +48,9 @@ const emojis = [
 
 //* setting the emoji elements on the allEmojisP element
 emojiSpanIt();
+
+//!List of emoji elements
 const emojiSpanEls = document.querySelectorAll(".emoji-span");
-// emojiSpanIt(true);
 const emojiUniqueEls = [];
 
 //! This is the main call function to filter duplicares
@@ -63,7 +64,7 @@ function filterDuplicates() {
 //* custom functions
 
 //* add event to emojis if mouseover and shift to select all alikes
-emojiSpanEls.forEach((emojiSpanEl) => {
+emojiSpanEls.forEach((emojiSpanEl, i) => {
   emojiSpanEl.addEventListener("mouseover", (eInner) => {
     //! If shift is active
     document.addEventListener("keydown", (e) => {
@@ -75,7 +76,7 @@ emojiSpanEls.forEach((emojiSpanEl) => {
           if (emojiSpanEl.textContent === emoji.textContent) {
             emoji.classList.add("emoji-span--shifted");
           } else {
-            emoji.classList.remove("emoji-span--shifted")
+            emoji.classList.remove("emoji-span--shifted");
           }
         });
       } else {
@@ -90,7 +91,6 @@ emojiSpanEls.forEach((emojiSpanEl) => {
         emoji.classList.remove("emoji-span--shifted");
       });
     });
-
   });
 
   emojiSpanEl.addEventListener("mouseout", (e) => {
@@ -100,19 +100,56 @@ emojiSpanEls.forEach((emojiSpanEl) => {
     });
   });
 
+  emojiSpanEl.addEventListener("click", function clickedEmoji(e) {
+    emojiSpanEl.classList.add("emoji-span--selected");
+    emojiUniqueEls.push(emojiSpanEl);
+
+    emojiUniqueEls.forEach((emoji) => {
+      uniqueEmojisP.appendChild(emoji);
+    });
+
+    // emojiSpanEls.removeChild(emojiSpanEl);
+    // console.log(emojiSpanEls);
+
+    this.removeEventListener("click", clickedEmoji);
+  });
+});
+
+
+uniqueEmojisP.addEventListener("mouseenter", (e) => {
+  console.log(" I am in botom");
+
+
+  emojiUniqueEls.forEach((emoji) => {
+    emoji.addEventListener("click", (e) => {
+      emoji.classList.remove("emoji-span--selected");
+      console.log(emoji);
+
+      // emojiSpanEls.push(emoji);
+      console.log(emojiUniqueEls);
+  
+      emojiSpanEls.forEach((emojiEl) => {
+        allEmojisP.appendChild(emojiEl);
+      });
+    });
+  });
 });
 
 
 //* add emojis in span elements and add the emoji-span class
-function emojiSpanIt(hidden=false) {
+function emojiSpanIt(hidden = false) {
   emojis.forEach((emoji, i) => {
     const emojiSpan = document.createElement("span");
     emojiSpan.classList.add("emoji-span");
-    if (hidden) {emojiSpan.classList.add("emoji-span--inactive")};
+    if (hidden) {
+      emojiSpan.classList.add("emoji-span--inactive");
+    }
     emojiSpan.textContent = emoji;
 
     allEmojisP.appendChild(emojiSpan);
-    if (hidden) {uniqueEmojisP.appendChild(emojiSpan)};
+    if (hidden) {
+      uniqueEmojisP.appendChild(emojiSpan);
+    }
   });
 }
 

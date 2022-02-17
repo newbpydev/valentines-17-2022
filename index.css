@@ -85,6 +85,7 @@ button:focus {
     flex-direction: row;
 } */
 
-.emoji-span--inactive {
-    display: inline;
+.emoji-span--selected {
+    /* display: inline; */
+    cursor: alias;
 }
