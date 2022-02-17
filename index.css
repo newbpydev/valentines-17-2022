@@ -80,3 +80,11 @@ button:focus {
 .emoji-span--shifted {
   transform: scale(1.5, 1.5);
 }
+
+/* .flex {
+    flex-direction: row;
+} */
+
+.emoji-span--inactive {
+    display: inline;
+}

@@ -46,9 +46,13 @@ const emojis = [
   "💘",
 ];
 
+//* setting the emoji elements on the allEmojisP element
 emojiSpanIt();
 const emojiSpanEls = document.querySelectorAll(".emoji-span");
+// emojiSpanIt(true);
+const emojiUniqueEls = [];
 
+//! This is the main call function to filter duplicares
 function filterDuplicates() {
   // 1. Filter out all duplicate emojis, leaving only one of each emoji.
   // 2. Render the unique emojis in uniqueEmojisP.
@@ -57,9 +61,6 @@ function filterDuplicates() {
 
 //* ////////////////////////////////////////////////////////////////////////////
 //* custom functions
-
-const shiftkey = KeyboardEvent.shiftKey;
-console.log(shiftkey);
 
 //* add event to emojis if mouseover and shift to select all alikes
 emojiSpanEls.forEach((emojiSpanEl) => {
@@ -102,14 +103,16 @@ emojiSpanEls.forEach((emojiSpanEl) => {
 });
 
 
-function emojiSpanIt() {
+//* add emojis in span elements and add the emoji-span class
+function emojiSpanIt(hidden=false) {
   emojis.forEach((emoji, i) => {
-    // console.log(emoji, i);
     const emojiSpan = document.createElement("span");
     emojiSpan.classList.add("emoji-span");
+    if (hidden) {emojiSpan.classList.add("emoji-span--inactive")};
     emojiSpan.textContent = emoji;
 
     allEmojisP.appendChild(emojiSpan);
+    if (hidden) {uniqueEmojisP.appendChild(emojiSpan)};
   });
 }
 
