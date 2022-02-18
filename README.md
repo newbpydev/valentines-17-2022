@@ -17,9 +17,12 @@ This is a solution to the [Valentine's Challenge](https://scrimba.com/learn/code
 
 ## Overview
 
-This is my solution to the Valentine's Challenge for the 16th of January, 2022.
-It is a small project that interacts with the users to display a valentines
-text and it will will fix the uppercases and the lowercases in an animated way.
+This is my solution to the Valentine's Challenge for the 17th of January, 2022.
+It is a small project that interacts with the users that displays a list of
+emojis and the programs has to filter out the duplicates. I wanted to try new
+things, so I added many mouse events and combination of those to get the desired
+results. the project is about 70% done, I wanted to add more functionality but
+overall I am very impressed on what is possible so far.
 
 ### Screenshot
 
@@ -31,7 +34,7 @@ text and it will will fix the uppercases and the lowercases in an animated way.
 ### Links
 
 - Solution URL: [GitHub](https://github.com/newbpydev/valentines-17-2022)
-- Live Site URL: [Live Site](https://relaxed-boyd-149753.netlify.app/)
+- Live Site URL: [Live Site](https://upbeat-kilby-3fd751.netlify.app/)
 
 ## My process
 
@@ -44,42 +47,46 @@ text and it will will fix the uppercases and the lowercases in an animated way.
 
 ### What I learned
 
-I have learned on this project how to use the SetInterval and the clearInterval
-functions to loop those a set of instructions by repeating after a certain
-number of seconds.
+I have learned on this project how to use the mouseover, mouseenter, and more on
+the keyup, keydown events.
 
 ```javascript
-const animateLetter = () => {
-  const letterEl = document.querySelectorAll(".letter");
-  const letterFixedEl = document.querySelectorAll(".letter-fixed");
-  let interId = 0;
-  let index = 0;
+function topPUpdate() {
+  emojiSpanEls.forEach((emojiSpanEl, i) => {
+    emojiSpanEl.addEventListener("mouseover", (eInner) => {
+      //! If shift is active
+      document.addEventListener("keydown", (e) => {
+        if (e.shiftKey) {
+          emojiSpanEls.forEach((emoji) => {
+            if (emojiSpanEl.textContent === emoji.textContent) {
+              emoji.classList.add("emoji-span--shifted");
+            } else {
+              emoji.classList.remove("emoji-span--shifted");
+            }
+          });
+        }
+      });
 
-  interId = setInterval(() => {
-    if (letterEl[index].textContent !== letterFixedEl[index].textContent) {
-      letterEl[index].classList.add("inactive");
-      letterFixedEl[index].classList.add("active");
-    }
-    index++;
-
-    if (index === letterEl.length) {
-      clearInterval(interId);
-    }
-  }, 200);
-};
+      //! If shift is not active
+      document.addEventListener("keyup", (e) => {
+        emojiSpanEls.forEach((emoji) => {
+          emoji.classList.remove("emoji-span--shifted");
+        });
+      });
+    });
 ```
 
 ### Continued development
 
 For future development, I will continue to use expore the js Dom to manipulate
-the elements on my pages.
+the elements on my pages, I see that there is so much to learn, but I will
+always try new things on every project.
 
 ### Useful resources
 
-- [MDN - setInterval()](https://developer.mozilla.org/en-US/docs/Web/API/setInterval) - The setInterval() method, offered on the Window and Worker interfaces, repeatedly calls a function or executes a code snippet, with a fixed time delay between each call.
-This method returns an interval ID which uniquely identifies the interval, so you can remove it later by calling clearInterval().
-
-- [YouTube - Using the setInterval() function in JavaScript](https://www.youtube.com/watch?v=ubLC1JxMqfY&t=672s&ab_channel=dcode) - You can use the "setInterval()" function in JavaScript to make your code run repeatedly on a timer. This can be super useful for clocks, counters, updating your page with live data or even creating games.
+- [MDN - mouseover event](https://developer.mozilla.org/en-US/docs/Web/API/Element/mouseover_event) - The mouseover event is fired at an Element when a pointing device (such as a mouse or trackpad) is used to move the cursor onto the element or one of its child elements.
+- [MDN - NodeList](https://developer.mozilla.org/en-US/docs/Web/API/NodeList) - NodeList objects are collections of nodes, usually returned by properties such as Node.childNodes and methods such as document.querySelectorAll().
+- [MDN - EventTarget.removeEventListener()](https://developer.mozilla.org/es/docs/Web/API/EventTarget/removeEventListener) - The removeEventListener() method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.
 
 ## Author
 
